@@ -4,13 +4,13 @@ from django.contrib.auth.models import User
 
 class UserAuthenticationTest(TestCase):
     def test_register_page(self):
-        """Tests if the registration was succesful"""
+        """Tests if the registration was successful"""
         response = self.client.get(reverse('register'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Registreren")
+        self.assertContains(response, "Registration")
 
     def test_user_registration(self):
-        """Test of een nieuwe gebruiker succesvol kan registreren"""
+        """Tests if the user can log in successfully"""
         response = self.client.post(reverse('register'), {
             'username': 'testuser',
             'password1': 'Mitch2002@',
