@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView
 from .models import Article
 
+def home(request):
+    return render(request, 'base.html')
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
