@@ -6,5 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # Admin URL (ChatGPT)
     path('accounts/', include('django.contrib.auth.urls')),  # Ingebouwde login en logout routes (ChatGPT)
     path('register/', views.register, name='register'),  # Registratie route naar de register view (ChatGPT)
+    path('articles/', views.ArticleListView.as_view(), name='article_list'),
+    path('articles/<int:pk>/', views.ArticleDetailView.as_view(), name='article_detail'),
 ]
 
