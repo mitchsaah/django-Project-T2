@@ -7,7 +7,8 @@ from django.urls import reverse
 from .models import Article
 from django import forms
 def home(request):
-    return render(request, 'base.html')
+    recent_articles = Article.objects.order_by('-created_at')[:5]
+    return render(request, 'base.html', {'recent_articles': recent_articles})
 
 def register(request):
     if request.method == 'POST':
