@@ -25,6 +25,7 @@ class ArticleListView(ListView):
     model = Article
     template_name = 'articles/article_list.html'  #
     context_object_name = 'articles'
+    ordering = ['-created_at']
 
 class ArticleDetailView(DetailView):
     model = Article
