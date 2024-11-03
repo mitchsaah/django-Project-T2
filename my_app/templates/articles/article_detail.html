@@ -3,8 +3,11 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ article.title }}</h1>
-<p>{{ article.content }}</p>
-<p>Written by: {{ article.author.username }} on {{ article.created_at }}</p>
-    <a href="{% url 'article_list' %}">Back to Articles</a>
+    <div class="article-container">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <p>Written by: {{ article.author.username }} on {{ article.created_at }}</p>
+            <a href="{% url 'article_list' %}">Back to Articles</a>
+    </div>
+
 {% endblock %}

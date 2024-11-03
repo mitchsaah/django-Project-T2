@@ -3,10 +3,12 @@
 {% block title %}Add Article{% endblock %}
 
 {% block content %}
-<h2>Add New Article</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+    <div class="add-article-container">
+        <h2>Add New Article</h2>
+        <form method="post">
+            {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" class="submit-button">Submit Article</button>
+        </form>
+    </div>
 {% endblock %}
