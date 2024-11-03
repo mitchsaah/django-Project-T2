@@ -28,7 +28,7 @@ class ArticleListView(ListView):
 class ArticleDetailView(DetailView):
     model = Article
     template_name = 'articles/article_detail.html'
-    context_object_name = 'articles'
+    context_object_name = 'article'
 
 class ArticleForm(forms.ModelForm):
     class Meta:
