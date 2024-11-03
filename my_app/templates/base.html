@@ -29,10 +29,22 @@
         </nav>
     </header>
     <main>
-        <div class="content">
-            {% block content %}
-            <!-- Specific info from page -->
-            {% endblock %}
+         <div class="content">
+            {% block content %}{% endblock %}
+
+            {% if recent_articles %}
+            <div class="recent-articles-container">
+                <h2>Recent Articles</h2>
+                <ul class="article-list">
+                    {% for article in recent_articles %}
+                        <li class="article-card">
+                            <a href="{% url 'article_detail' article.pk %}" class="article-link">{{ article.title }}</a>
+                            <p>Written by {{ article.author.username }} on {{ article.created_at|date:"F j, Y" }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
     </main>
     <footer>
