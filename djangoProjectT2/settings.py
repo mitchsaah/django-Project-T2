@@ -122,3 +122,9 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirects to the articles list after login
+LOGIN_REDIRECT_URL = 'article_list'
+
+# Redirects to the homepage after logout
+LOGOUT_REDIRECT_URL = 'home'
