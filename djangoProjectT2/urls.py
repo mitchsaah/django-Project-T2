@@ -9,5 +9,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),  # Registratie route naar de register view (ChatGPT)
     path('articles/', views.ArticleListView.as_view(), name='article_list'),
     path('articles/<int:pk>/', views.ArticleDetailView.as_view(), name='article_detail'),
+    path('add/', views.add_article, name='add_article'), 
+
 ]
 
