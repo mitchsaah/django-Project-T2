@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Edit Article{% endblock %}
+{% block content %}
+    <h1>Edit Article</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{% url 'article_detail' article.pk %}">Cancel</a>
+{% endblock %}

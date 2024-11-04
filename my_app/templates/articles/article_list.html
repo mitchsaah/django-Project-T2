@@ -15,6 +15,10 @@
                 <li class="article-card">
                     <a href="{% url 'article_detail' article.pk %}" class="article-link">{{ article.title }}</a>
                     <p>Written by {{ article.author.username }} on {{ article.created_at|date:"F j, Y" }}</p>
+                    {% if article.author == user %}
+                        <a href="{% url 'edit_article' article.pk %}">Edit</a>
+                        <a href="{% url 'delete_article' article.pk %}">Delete</a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
