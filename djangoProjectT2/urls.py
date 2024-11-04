@@ -10,6 +10,8 @@ urlpatterns = [
     path('articles/', views.ArticleListView.as_view(), name='article_list'),
     path('articles/<int:pk>/', views.ArticleDetailView.as_view(), name='article_detail'),
     path('add/', views.add_article, name='add_article'), 
+    path('<int:pk>/edit/', views.edit_article, name='edit_article'),
+    path('<int:pk>/delete/', views.delete_article, name='delete_article'),
 
 ]
 
