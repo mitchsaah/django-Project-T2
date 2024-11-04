@@ -6,6 +6,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Article
 from django import forms
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
+
 def home(request):
     recent_articles = Article.objects.order_by('-created_at')[:5]
     return render(request, 'base.html', {'recent_articles': recent_articles})
@@ -49,3 +53,24 @@ def add_article(request):
     else:
         form = ArticleForm()
     return render(request, 'articles/add_article.html', {'form': form})
+
+@login_required
+def edit_article(request, pk):
+    article = get_object_or_404(Article, pk=pk, author=request.user)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('article_detail', pk=article.pk)
+    else:
+        form = ArticleForm(instance=article)
+    return render(request, 'articles/edit_article.html', {'form': form, 'article': article})
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = 'articles/delete_article.html'
+    success_url = reverse_lazy('article_list')
+
+    def get_queryset(self):
+        # Limit deletion to the article owner
+        return self.model.objects.filter(author=self.request.user)
